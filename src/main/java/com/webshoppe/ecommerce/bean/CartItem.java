@@ -24,11 +24,5 @@ public class CartItem {
         return getPrice().multiply(new BigDecimal(quantity));
     }
     
-//    public int addQuantity(CartItem item) {
-////    	item.getQuantity() = item.getQuantity() + 1;
-//    	int quantity = item.getQuantity() + 1;
-////    	item.setQuantity(quantity);
-//    	return quantity;
-//    }
 
 }

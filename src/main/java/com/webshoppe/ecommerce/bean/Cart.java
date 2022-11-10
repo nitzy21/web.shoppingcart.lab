@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 public class Cart {
 	private Map<String, CartItem> items;
-	private CartItem storeItem;
 
 	public Cart() {
 		items = new HashMap<>();
@@ -18,33 +20,34 @@ public class Cart {
 		return items.size();
 	}
 
-	public void add(CartItem item) {
+	public void add(CartItem item, Cart cart) {
+
+		int quantity;
+		
 		if (item == null) {
 			throw new IllegalArgumentException("Cart item cannot be null");
 		}
 
-//        if (items.containsKey(item.getId())) {
-//        	storeItem = items.get(item.getId());
-//        	int quantity = storeItem.getQuantity() + 1;
-//        	storeItem.setQuantity(quantity);
-//        	System.out.println("Quani" + quantity);
-//        	items.replace(item.getId().trim(), storeItem);
-//        } else {
-//        	items.put(item.getId().trim(), item);
-//        }
-
-		if (getItemsAsList().contains(item)) {
-
-			int quantity = item.getQuantity() + 1;
-			item.setQuantity(quantity);
-			System.out.println("Quantity" + quantity);
-
-//        	CartItem storeItem = items.get(item.getId());
-//        	int quantity = storeItem.getQuantity() + 1;
-//        	storeItem.setQuantity(quantity);
-//        	System.out.println("Quani" + quantity);
-//        	items.replace(item.getId().trim(), storeItem);
+		for (CartItem cartItem : cart.getItemsAsList()) {
+			if (item.getId().equals(cartItem.getId())) {
+				quantity = cartItem.getQuantity() + 1;
+				item.setQuantity(quantity);
+				System.out.println("Quantity" + quantity);
+			}
 		}
+		
+//		if (getItemsAsList().contains(item)) {
+//
+//			int quantity = item.getQuantity() + 1;
+//			item.setQuantity(quantity);
+//			System.out.println("Quantity" + quantity);
+//
+////        	CartItem storeItem = items.get(item.getId());
+////        	int quantity = storeItem.getQuantity() + 1;
+////        	storeItem.setQuantity(quantity);
+////        	System.out.println("Quani" + quantity);
+////        	items.replace(item.getId().trim(), storeItem);
+//		}
 
 		items.put(item.getId().trim(), item);
 
