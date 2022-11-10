@@ -32,21 +32,13 @@ public class Cart {
 			if (item.getId().equals(cartItem.getId())) {
 				quantity = cartItem.getQuantity() + 1;
 				item.setQuantity(quantity);
-				System.out.println("Quantity" + quantity);
 			}
 		}
 		
 //		if (getItemsAsList().contains(item)) {
-//
 //			int quantity = item.getQuantity() + 1;
 //			item.setQuantity(quantity);
 //			System.out.println("Quantity" + quantity);
-//
-////        	CartItem storeItem = items.get(item.getId());
-////        	int quantity = storeItem.getQuantity() + 1;
-////        	storeItem.setQuantity(quantity);
-////        	System.out.println("Quani" + quantity);
-////        	items.replace(item.getId().trim(), storeItem);
 //		}
 
 		items.put(item.getId().trim(), item);
